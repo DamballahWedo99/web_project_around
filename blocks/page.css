@@ -1,7 +1,7 @@
 .page {
   background-color: #000;
   margin: 0;
-  padding: 3% 10%;
+  padding: 0 200px;
 }
 
 h1,
@@ -21,6 +21,6 @@ span {
 
 @media screen and (max-width: 320px) {
   .page {
-    padding: 8% 0 8%;
+    padding: 0;
   }
 }
