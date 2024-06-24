@@ -1,0 +1,9 @@
+.header__container {
+  display: flex;
+  padding-bottom: 7vh;
+  border-bottom: 0.02vw solid #fff;
+}
+
+.header__image {
+  width: 15%;
+}
