@@ -1,0 +1,125 @@
+.profile__container {
+  margin-top: 36px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile__avatar {
+  border-radius: 100%;
+  width: 15%;
+  margin-right: 35px;
+}
+
+.profile__info {
+  display: grid;
+  grid-template-columns: 2fr;
+  grid-template-rows: 2fr;
+  grid-gap: 1vw 2vw;
+  grid-template-areas:
+    "name button"
+    "job job";
+}
+
+.profile__name {
+  font-family: "Inter", Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 3vw;
+  color: #fff;
+  grid-area: name;
+}
+
+.profile__job {
+  font-family: "Inter", Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 1.5vw;
+  color: #fff;
+  grid-area: job;
+}
+
+.profile__edit-button {
+  width: 2vw;
+  grid-area: button;
+  align-self: center;
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+
+.profile__edit-button:hover {
+  opacity: 60%;
+}
+
+.profile__add-button_device_desktop-and-tablet {
+  width: 13vw;
+  margin-left: auto;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.profile__add-button_device_desktop-and-tablet:hover {
+  opacity: 60%;
+}
+
+.profile__add-button_device_movile {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__avatar {
+    width: 16vw;
+  }
+
+  .profile__name {
+    font-size: 3.5vw;
+  }
+
+  .profile__job {
+    font-size: 2.5vw;
+  }
+
+  .profile__edit-button {
+    width: 2.5vw;
+  }
+  .profile__add-button {
+    width: 15vw;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile__container {
+    margin-top: 38px;
+    flex-direction: column;
+  }
+
+  .profile__avatar {
+    width: 35vw;
+    margin: 0 0 26px;
+  }
+
+  .profile__info {
+    grid-gap: 14px 10px;
+    margin-bottom: 36px;
+  }
+
+  .profile__name {
+    font-size: 7vw;
+  }
+
+  .profile__edit-button {
+    width: 5vw;
+  }
+
+  .profile__job {
+    margin: auto;
+    font-size: 4vw;
+  }
+
+  .profile__add-button_device_desktop-and-tablet {
+    display: none;
+  }
+
+  .profile__add-button_device_movile {
+    display: block;
+    width: 90%;
+  }
+}
