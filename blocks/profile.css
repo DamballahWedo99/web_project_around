@@ -23,7 +23,7 @@
 
 .profile__name {
   font-family: "Inter", Helvetica, sans-serif;
-  font-weight: bold;
+  font-weight: normal;
   font-size: 3vw;
   color: #fff;
   grid-area: name;
