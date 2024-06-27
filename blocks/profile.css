@@ -1,5 +1,6 @@
 .profile__container {
   margin-top: 36px;
+  margin-bottom: 46px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -88,6 +89,8 @@
 @media screen and (max-width: 320px) {
   .profile__container {
     margin-top: 38px;
+    margin-bottom: 36px;
+
     flex-direction: column;
   }
 
