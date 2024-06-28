@@ -41,21 +41,20 @@
 
 
 
-    <!-- Agregar Js -->
-    <section class="popup ">
+    <section class="popup">
       <div class="popup__container">
         <img class="popup__close-icon" src="./images/close icon.png" alt="Ícono para cerrar el formulario">
         <h2 class="popup__title">Editar perfil</h2>
         <form>
           <fieldset class="popup__info-field">
             <label class="popup__label" for="name">
-              <input class="popup__input" type="text" id="name" placeholder="Nombre">
+              <input class="popup__input popup__input_name" type="text" id="name" placeholder="Nombre">
             </label>
             <label class="popup__label" for="about">
-              <input class="popup__input" type="text" id="about" placeholder="Acerca de mí">
+              <input class="popup__input popup__input_about" type="text" id="about" placeholder="Acerca de mí">
             </label>
           </fieldset>
-          <button class="popup__button" id="submit-button" disabled>Guardar</button>
+          <button class="popup__button" id="submit-button">Guardar</button>
         </form>
       </div>
     </section>
@@ -116,6 +115,8 @@
   <footer class="footer">
     <p class="footer__copyright">© 2021 Around The U.S.</p>
   </footer>
+
+  <script src="./scripts/scripts.js"></script>
 </body>
 
 </html>
