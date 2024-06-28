@@ -50,18 +50,18 @@
   opacity: 60%;
 }
 
-.profile__add-button_device_desktop-and-tablet {
+.profile__add-button-desktop-and-tablet {
   width: 13vw;
   margin-left: auto;
   cursor: pointer;
   transition: opacity 0.3s;
 }
 
-.profile__add-button_device_desktop-and-tablet:hover {
+.profile__add-button-desktop-and-tablet:hover {
   opacity: 60%;
 }
 
-.profile__add-button_device_movile {
+.profile__add-button-movile {
   display: none;
 }
 
@@ -117,11 +117,11 @@
     font-size: 4vw;
   }
 
-  .profile__add-button_device_desktop-and-tablet {
+  .profile__add-button-desktop-and-tablet {
     display: none;
   }
 
-  .profile__add-button_device_movile {
+  .profile__add-button-movile {
     display: block;
     width: 90%;
   }
