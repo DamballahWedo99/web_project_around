@@ -32,16 +32,19 @@
           <h2 class="profile__job">Explorador</h2>
           <img class="profile__edit-button" src="./images/edit-button.png" alt="boton para la edición del perfil">
         </div>
-        <img class="profile__add-button-desktop-and-tablet" src="./images/add-button.png" alt="ícono para añadir">
-        <img class="profile__add-button-mobile" src="./images/add-button-mobile.png" alt="ícono para añadir">
+        <img class="profile__add-button profile__add-button-desktop-and-tablet" src="./images/add-button.png"
+          alt="ícono para añadir">
+        <img class="profile__add-button profile__add-button-mobile" src="./images/add-button-mobile.png"
+          alt="ícono para añadir">
       </div>
     </section>
 
 
 
-    <section class="popup">
+    <section class="popup popup_profile">
       <div class="popup__container">
-        <img class="popup__close-icon" src="./images/close-icon.png" alt="Ícono para cerrar el formulario">
+        <img class="popup__close-icon popup__close-icon_profile" src="./images/close-icon.png"
+          alt="Ícono para cerrar el formulario">
         <h2 class="popup__title">Editar perfil</h2>
         <form>
           <fieldset class="popup__info-field">
@@ -52,10 +55,33 @@
               <input class="popup__input popup__input_about" type="text" id="about" placeholder="Acerca de mí">
             </label>
           </fieldset>
-          <button class="popup__button" id="submit-button">Guardar</button>
+          <button class="popup__button popup__button_profile" id="submit-profile">Guardar</button>
         </form>
       </div>
     </section>
+
+
+
+    <section class="popup popup_cards">
+      <div class="popup__container">
+        <img class="popup__close-icon popup__close-icon_cards" src="./images/close-icon.png"
+          alt="Ícono para cerrar el formulario">
+        <h2 class="popup__title">Nuevo lugar</h2>
+        <form>
+          <fieldset class="popup__info-field">
+            <label class="popup__label" for="title">
+              <input class="popup__input popup__input_title" type="text" id="title" placeholder="Título">
+            </label>
+            <label class="popup__label" for="image-url">
+              <input class="popup__input popup__input_image-url" type="text" id="image-url"
+                placeholder="Link de la imagen">
+            </label>
+          </fieldset>
+          <button class="popup__button popup__button_cards" id="submit-card">Guardar</button>
+        </form>
+      </div>
+    </section>
+
 
 
     <section class="elements"></section>
