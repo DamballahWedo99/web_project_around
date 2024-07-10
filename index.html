@@ -7,10 +7,9 @@
   <title>Around the U.S.</title>
   <meta name="description"
     content="Red social en la cual podrás enseñar en todos los lugares de los Estados Unidos en los que has estado">
-  <!-- ver si está bien bien esto -->
   <meta name="author" content="Diego Emilio Casso Sosa">
   <meta name="keywords" content="Estados Unidos, red social, fotografías">
-  <link rel="stylesheet" href="./favicon.ico" type="image/x-icon">
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="./pages/index.css">
 </head>
 
@@ -34,7 +33,7 @@
           <img class="profile__edit-button" src="./images/edit-button.png" alt="boton para la edición del perfil">
         </div>
         <img class="profile__add-button-desktop-and-tablet" src="./images/add-button.png" alt="ícono para añadir">
-        <img class="profile__add-button-movile" src="./images/add-button-movile.png" alt="ícono para añadir">
+        <img class="profile__add-button-mobile" src="./images/add-button-mobile.png" alt="ícono para añadir">
       </div>
     </section>
 
@@ -59,63 +58,25 @@
     </section>
 
 
-    <!-- Falta agregar JS -->
-    <section class="elements">
-      <div class="elements__container">
-        <img class="elements__image" src="./images/imagen-social-1.png" alt="Imagen de uno bosque con un rio">
-        <div class="elements__info">
-          <span class="elements__name">Valle de Yosemite</span>
-          <img class="elements__like-icon" src="./images/corazon-inactivo.svg" alt="Ícono de un signo de me gusta">
-        </div>
-      </div>
-
-      <div class="elements__container">
-        <img class="elements__image" src="./images/imagen-social-2.png" alt="Imagen de uno bosque con un rio">
-        <div class="elements__info">
-          <span class="elements__name">Lago Louise</span>
-          <img class="elements__like-icon" src="./images/corazon-inactivo.svg" alt="Ícono de un signo de me gusta">
-        </div>
-      </div>
-
-      <div class="elements__container">
-        <img class="elements__image" src="./images/imagen-social-3.png" alt="Imagen de uno bosque con un rio">
-        <div class="elements__info">
-          <span class="elements__name">Montañas Calvas</span>
-          <img class="elements__like-icon" src="./images/corazon-inactivo.svg" alt="Ícono de un signo de me gusta">
-        </div>
-      </div>
-
-      <div class="elements__container">
-        <img class="elements__image" src="./images/imagen-social-4.png" alt="Imagen de uno bosque con un rio">
-        <div class="elements__info">
-          <span class="elements__name">Latemar</span>
-          <img class="elements__like-icon" src="./images/corazon-inactivo.svg" alt="Ícono de un signo de me gusta">
-        </div>
-      </div>
-
-      <div class="elements__container">
-        <img class="elements__image" src="./images/imagen-social-5.png" alt="Imagen de uno bosque con un rio">
-        <div class="elements__info">
-          <span class="elements__name">Parque Nacional de la Vanoise</span>
-          <img class="elements__like-icon" src="./images/corazon-inactivo.svg" alt="Ícono de un signo de me gusta">
-        </div>
-      </div>
-
-      <div class="elements__container">
-        <img class="elements__image" src="./images/imagen-social-6.png" alt="Imagen de uno bosque con un rio">
-        <div class="elements__info">
-          <span class="elements__name">Lago di Braies</span>
-          <img class="elements__like-icon" src="./images/corazon-inactivo.svg" alt="Ícono de un signo de me gusta">
-        </div>
-      </div>
-    </section>
+    <section class="elements"></section>
   </main>
 
   <footer class="footer">
     <p class="footer__copyright">© 2021 Around The U.S.</p>
   </footer>
 
+
+
   <script src="./scripts/scripts.js"></script>
+  <template id="card-template">
+    <div class="elements__container">
+      <img class="elements__image" src="./images/imagen-social-1.png" alt="Imagen de uno bosque con un rio">
+      <div class="elements__info">
+        <span class="elements__name">Valle de Yosemite</span>
+        <img class="elements__like-icon" src="./images/corazon-inactivo.svg" alt="Ícono de un signo de me gusta">
+      </div>
+    </div>
+  </template>
 </body>
 
 </html>

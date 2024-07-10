@@ -61,7 +61,7 @@
   opacity: 60%;
 }
 
-.profile__add-button-movile {
+.profile__add-button-mobile {
   display: none;
 }
 
@@ -121,7 +121,7 @@
     display: none;
   }
 
-  .profile__add-button-movile {
+  .profile__add-button-mobile {
     display: block;
     width: 90%;
   }
