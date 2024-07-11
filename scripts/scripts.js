@@ -63,22 +63,22 @@ closeButtonProfile.addEventListener("click", toggleProfile);
 closeButtonCards.addEventListener("click", toggleCards);
 
 // Da funcionalidad para modificar el perfil
-profileButton.addEventListener("click", () => {
-  const profileName = document.querySelector(".profile__name");
-  const inputName = document.querySelector(".popup__input_name");
-  const profileAbout = document.querySelector(".profile__job");
-  const inputAbout = document.querySelector(".popup__input_about");
-  const submitButtonProfile = document.querySelector("#submit-profile");
+const profileName = document.querySelector(".profile__name");
+const inputName = document.querySelector(".popup__input_name");
+const profileAbout = document.querySelector(".profile__job");
+const inputAbout = document.querySelector(".popup__input_about");
+const submitButtonProfile = document.querySelector("#submit-profile");
 
+submitButtonProfile.addEventListener("click", function (evt) {
+  evt.preventDefault();
+  profileName.textContent = inputName.value || "Jacques Cousteau";
+  profileAbout.textContent = inputAbout.value || "Explorador";
+  toggleProfile();
+});
+
+profileButton.addEventListener("click", () => {
   inputName.value = profileName.textContent;
   inputAbout.value = profileAbout.textContent;
-
-  submitButtonProfile.addEventListener("click", function (evt) {
-    evt.preventDefault();
-    profileName.textContent = inputName.value || "Jacques Cousteau";
-    profileAbout.textContent = inputAbout.value || "Explorador";
-    toggleProfile();
-  });
 });
 
 // Da funcionalidad de agregar tarjetas
