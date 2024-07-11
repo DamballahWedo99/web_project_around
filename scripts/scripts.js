@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 const popupProfile = document.querySelector(".popup_profile");
 const popupCards = document.querySelector(".popup_cards");
 const profileButton = document.querySelector(".profile__edit-button");
-const cardsButton = document.querySelector(".profile__add-button");
+const cardButton = document.querySelectorAll(".profile__add-button");
 const closeButtonProfile = document.querySelector(".popup__close-icon_profile");
 const closeButtonCards = document.querySelector(".popup__close-icon_cards");
 
@@ -58,7 +58,9 @@ function toggleCards() {
 }
 
 profileButton.addEventListener("click", toggleProfile);
-cardsButton.addEventListener("click", toggleCards);
+cardButton.forEach((button) => {
+  button.addEventListener("click", toggleCards);
+});
 closeButtonProfile.addEventListener("click", toggleProfile);
 closeButtonCards.addEventListener("click", toggleCards);
 
@@ -99,4 +101,14 @@ submitButtonCard.addEventListener("click", function (evt) {
   inputTitle.value = "";
   inputImageUrl.value = "";
   toggleCards();
+});
+
+// Da funcionalidad de remover tarjetas
+document.querySelector(".elements").addEventListener("click", function (evt) {
+  if (evt.target.classList.contains("elements__trash-can")) {
+    const card = evt.target.closest(".elements__container");
+    if (card) {
+      card.remove();
+    }
+  }
 });
