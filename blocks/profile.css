@@ -50,19 +50,23 @@
   opacity: 60%;
 }
 
-.profile__add-button-desktop-and-tablet {
-  width: 13vw;
+.profile__add-button-container {
+  display: flex;
+  justify-content: center;
   margin-left: auto;
-  cursor: pointer;
+  width: 13vw;
+  height: 7vh;
+  border: solid 0.15vw white;
   transition: opacity 0.3s;
+  cursor: pointer;
 }
 
-.profile__add-button-desktop-and-tablet:hover {
+.profile__add-button-container:hover {
   opacity: 60%;
 }
 
-.profile__add-button-mobile {
-  display: none;
+.profile__add-button {
+  width: 2vw;
 }
 
 @media screen and (max-width: 768px) {
@@ -81,8 +85,15 @@
   .profile__edit-button {
     width: 2.5vw;
   }
-  .profile__add-button {
+
+  .profile__add-button-container {
     width: 15vw;
+    height: 6vh;
+    border: solid 0.2vw white;
+  }
+
+  .profile__add-button {
+    width: 2vw;
   }
 }
 
@@ -117,12 +128,14 @@
     font-size: 4vw;
   }
 
-  .profile__add-button-desktop-and-tablet {
-    display: none;
+  .profile__add-button-container {
+    width: 88%;
+    height: 7vh;
+    border: solid 0.5vw white;
+    margin: auto;
   }
 
-  .profile__add-button-mobile {
-    display: block;
-    width: 90%;
+  .profile__add-button {
+    width: 5vw;
   }
 }

@@ -33,16 +33,15 @@
           <h2 class="profile__job">Explorador</h2>
           <img class="profile__edit-button" src="./images/edit-button.png" alt="boton para la edición del perfil">
         </div>
-        <img class="profile__add-button profile__add-button-desktop-and-tablet" src="./images/add-button.png"
-          alt="ícono para añadir">
-        <img class="profile__add-button profile__add-button-mobile" src="./images/add-button-mobile.png"
-          alt="ícono para añadir">
+        <div class="profile__add-button-container">
+          <img class="profile__add-button" src="./images/cross.svg" alt="ícono para añadir">
+        </div>
       </div>
     </section>
 
 
 
-    <section class="popup popup_profile">
+    <section class="popup" id="popup-profile">
       <div class="popup__container">
         <img class="popup__close-icon popup__close-icon_profile" src="./images/close-icon.png"
           alt="Ícono para cerrar el formulario">
@@ -63,7 +62,7 @@
 
 
 
-    <section class="popup popup_cards">
+    <section class="popup" id="popup-cards">
       <div class="popup__container">
         <img class="popup__close-icon popup__close-icon_cards" src="./images/close-icon.png"
           alt="Ícono para cerrar el formulario">
@@ -94,7 +93,6 @@
 
 
 
-  <script src="./scripts/scripts.js"></script>
   <template id="card-template">
     <div class="elements__container">
       <img class="elements__trash-can" src="./images/trash.svg" alt="Ícono de un bote de basura">
@@ -105,6 +103,7 @@
       </div>
     </div>
   </template>
+  <script src="./scripts/scripts.js"></script>
 </body>
 
 </html>
