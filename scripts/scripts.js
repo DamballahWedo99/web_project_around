@@ -116,6 +116,12 @@ submitButtonCard.addEventListener("click", function (evt) {
 });
 
 elements.addEventListener("click", function (evt) {
+  if (evt.target.classList.contains("elements__like-icon")) {
+    evt.target.classList.toggle("elements__like-icon-active");
+  }
+});
+
+elements.addEventListener("click", function (evt) {
   if (evt.target.classList.contains("elements__trash-can")) {
     const card = evt.target.closest(".elements__container");
     if (card) {

@@ -57,6 +57,11 @@
   cursor: pointer;
 }
 
+.elements__like-icon-active {
+  background: url(../images/corazon-activo.svg) no-repeat center;
+  background-size: cover;
+}
+
 .elements__like-icon:hover {
   opacity: 0.5;
 }
