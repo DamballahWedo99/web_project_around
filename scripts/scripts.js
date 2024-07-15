@@ -87,6 +87,7 @@ elements.addEventListener("click", function (evt) {
     const titleCard = card.querySelector(".elements__name").textContent;
 
     popupFullImage.src = imgCard;
+    popupFullImage.alt = titleCard;
     popupImageTitle.textContent = titleCard;
     toggleImage();
   }
