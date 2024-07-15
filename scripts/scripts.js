@@ -26,13 +26,18 @@ const initialCards = [
   },
 ];
 
+const elements = document.querySelector(".elements");
 const cardTemplate = document.querySelector("#card-template");
 const popupProfile = document.querySelector("#popup-profile");
 const popupCards = document.querySelector("#popup-cards");
+const popupImage = document.querySelector("#popup-image");
+const popupImageTitle = document.querySelector(".popup__image-title");
+const popupFullImage = document.querySelector(".popup__image");
 const profileButton = document.querySelector(".profile__edit-button");
 const cardButton = document.querySelector(".profile__add-button-container");
 const closeButtonProfile = document.querySelector(".popup__close-icon_profile");
 const closeButtonCards = document.querySelector(".popup__close-icon_cards");
+const closeButtonImage = document.querySelector("#image-close-icon");
 const profileName = document.querySelector(".profile__name");
 const inputName = document.querySelector(".popup__input_name");
 const profileAbout = document.querySelector(".profile__job");
@@ -49,6 +54,10 @@ function toggleProfile() {
 
 function toggleCards() {
   popupCards.classList.toggle("popup_opened");
+}
+
+function toggleImage() {
+  popupImage.classList.toggle("popup_opened");
 }
 
 function addCard(card) {
@@ -71,8 +80,20 @@ initialCards.forEach((card) => {
 
 profileButton.addEventListener("click", toggleProfile);
 cardButton.addEventListener("click", toggleCards);
+elements.addEventListener("click", function (evt) {
+  if (evt.target.classList.contains("elements__image")) {
+    const card = evt.target.closest(".elements__container");
+    const imgCard = card.querySelector(".elements__image").src;
+    const titleCard = card.querySelector(".elements__name").textContent;
+
+    popupFullImage.src = imgCard;
+    popupImageTitle.textContent = titleCard;
+    toggleImage();
+  }
+});
 closeButtonProfile.addEventListener("click", toggleProfile);
 closeButtonCards.addEventListener("click", toggleCards);
+closeButtonImage.addEventListener("click", toggleImage);
 
 submitButtonProfile.addEventListener("click", function (evt) {
   evt.preventDefault();
@@ -94,7 +115,7 @@ submitButtonCard.addEventListener("click", function (evt) {
   toggleCards();
 });
 
-document.querySelector(".elements").addEventListener("click", function (evt) {
+elements.addEventListener("click", function (evt) {
   if (evt.target.classList.contains("elements__trash-can")) {
     const card = evt.target.closest(".elements__container");
     if (card) {
