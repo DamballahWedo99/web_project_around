@@ -66,9 +66,16 @@ function addCard(card) {
     .content.querySelector(".elements__container");
   cardElement.querySelector(".elements__image").src =
     card.link || inputImageUrl.value;
+  if (cardElement.querySelector(".elements__image").src === "") {
+    cardElement.querySelector(".elements__image").src =
+      "https://plus.unsplash.com/premium_photo-1719930222062-5e63c50077cc?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+  }
   cardElement.querySelector(".elements__image").alt = card.name;
   cardElement.querySelector(".elements__name").textContent =
     card.name || inputTitle.value;
+  if (cardElement.querySelector(".elements__name").textContent === "") {
+    cardElement.querySelector(".elements__name").textContent = "Título";
+  }
 
   document.querySelector(".elements").prepend(cardElement);
 }
