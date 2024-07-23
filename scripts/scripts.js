@@ -80,6 +80,14 @@ function addCard(card) {
   document.querySelector(".elements").prepend(cardElement);
 }
 
+const toggleEscape = (evt) => {
+  if (evt.key === "Escape") {
+    popupProfile.classList.remove("popup_opened");
+    popupCards.classList.remove("popup_opened");
+    popupImage.classList.remove("popup_opened");
+  }
+};
+
 // Eventlisteners
 initialCards.forEach((card) => {
   addCard(card);
@@ -137,3 +145,5 @@ elements.addEventListener("click", function (evt) {
     }
   }
 });
+
+document.addEventListener("keydown", toggleEscape);
