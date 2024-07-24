@@ -80,12 +80,28 @@ function addCard(card) {
   document.querySelector(".elements").prepend(cardElement);
 }
 
+const popupRemove = () => {
+  document.querySelectorAll(".popup").forEach((popup) => {
+    popup.classList.remove("popup_opened");
+  });
+};
+
 const toggleEscape = (evt) => {
   if (evt.key === "Escape") {
-    popupProfile.classList.remove("popup_opened");
-    popupCards.classList.remove("popup_opened");
-    popupImage.classList.remove("popup_opened");
+    popupRemove();
   }
+};
+
+const toggleClick = () => {
+  const popupList = Array.from(document.querySelectorAll(".popup"));
+
+  popupList.forEach((popup) => {
+    popup.addEventListener("click", function (evt) {
+      if (!evt.target.closest(".popup__container")) {
+        popupRemove();
+      }
+    });
+  });
 };
 
 // Eventlisteners
@@ -147,3 +163,4 @@ elements.addEventListener("click", function (evt) {
 });
 
 document.addEventListener("keydown", toggleEscape);
+toggleClick();
