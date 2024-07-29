@@ -108,12 +108,30 @@
   cursor: pointer;
 }
 
+.popup__button_disabled {
+  pointer-events: none;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
 .popup__button:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
 .popup_opened {
   display: flex;
+}
+
+.popup__input_type_error {
+  border-bottom: 1px solid red;
+}
+
+.popup__input-error_active {
+  font-family: "Inter", Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 1vw;
+  color: red;
 }
 
 @media screen and (max-width: 768px) {

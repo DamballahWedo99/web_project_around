@@ -39,13 +39,13 @@ const closeButtonProfile = document.querySelector(".popup__close-icon_profile");
 const closeButtonCards = document.querySelector(".popup__close-icon_cards");
 const closeButtonImage = document.querySelector("#image-close-icon");
 const profileName = document.querySelector(".profile__name");
-const inputName = document.querySelector(".popup__input_name");
+const inputName = document.querySelector("#name");
 const profileAbout = document.querySelector(".profile__job");
-const inputAbout = document.querySelector(".popup__input_about");
+const inputAbout = document.querySelector("#about");
 const submitButtonProfile = document.querySelector("#submit-profile");
 const submitButtonCard = document.querySelector("#submit-card");
-const inputTitle = document.querySelector(".popup__input_title");
-const inputImageUrl = document.querySelector(".popup__input_image-url");
+const inputTitle = document.querySelector("#title");
+const inputImageUrl = document.querySelector("#image-url");
 
 // funciones
 function toggleProfile() {
@@ -54,6 +54,8 @@ function toggleProfile() {
 
 function toggleCards() {
   popupCards.classList.toggle("popup_opened");
+  inputTitle.value = "";
+  inputImageUrl.value = "";
 }
 
 function toggleImage() {
@@ -127,10 +129,9 @@ closeButtonProfile.addEventListener("click", toggleProfile);
 closeButtonCards.addEventListener("click", toggleCards);
 closeButtonImage.addEventListener("click", toggleImage);
 
-submitButtonProfile.addEventListener("click", function (evt) {
-  evt.preventDefault();
-  profileName.textContent = inputName.value || "Jacques Cousteau";
-  profileAbout.textContent = inputAbout.value || "Explorador";
+submitButtonProfile.addEventListener("click", function () {
+  profileName.textContent = inputName.value;
+  profileAbout.textContent = inputAbout.value;
   toggleProfile();
 });
 
