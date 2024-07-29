@@ -14,7 +14,7 @@
 
 .profile__info {
   display: grid;
-  grid-template-columns: 2fr;
+  grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
   grid-template-rows: 2fr;
   grid-gap: 1vw 2vw;
   grid-template-areas:
@@ -28,6 +28,9 @@
   font-size: 3vw;
   color: #fff;
   grid-area: name;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .profile__job {
@@ -36,6 +39,12 @@
   font-size: 1.5vw;
   color: #fff;
   grid-area: job;
+  grid-row-start: 0;
+  grid-row-end: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 30vw;
 }
 
 .profile__edit-button {
