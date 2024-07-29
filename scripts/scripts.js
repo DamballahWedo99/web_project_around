@@ -1,5 +1,5 @@
 // Variables
-import { enableValidation } from "./validate.js";
+import { validationReset } from "./validate.js";
 
 const initialCards = [
   {
@@ -52,30 +52,14 @@ const inputImageUrl = document.querySelector("#image-url");
 // funciones
 function toggleProfile() {
   popupProfile.classList.toggle("popup_opened");
-  enableValidation({
-    formSelector: ".popup__form",
-    inputSelector: ".popup__input",
-    fieldsetSelector: ".popup__info-field",
-    submitButtonSelector: ".popup__button",
-    inactiveButtonClass: "popup__button_disabled",
-    inputErrorClass: "popup__input_type_error",
-    errorClass: "popup__input-error_active",
-  });
+  validationReset();
 }
 
 function toggleCards() {
   popupCards.classList.toggle("popup_opened");
   inputTitle.value = "";
   inputImageUrl.value = "";
-  enableValidation({
-    formSelector: ".popup__form",
-    inputSelector: ".popup__input",
-    fieldsetSelector: ".popup__info-field",
-    submitButtonSelector: ".popup__button",
-    inactiveButtonClass: "popup__button_disabled",
-    inputErrorClass: "popup__input_type_error",
-    errorClass: "popup__input-error_active",
-  });
+  validationReset();
 }
 
 function toggleImage() {

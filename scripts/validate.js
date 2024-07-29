@@ -83,15 +83,16 @@ enableValidation({
   errorClass: "popup__input-error_active",
 });
 
-// const validationReset = () => {
-//   const formList = Array.from(document.querySelectorAll(".popup__form"));
+const validationReset = () => {
+  enableValidation({
+    formSelector: ".popup__form",
+    inputSelector: ".popup__input",
+    fieldsetSelector: ".popup__info-field",
+    submitButtonSelector: ".popup__button",
+    inactiveButtonClass: "popup__button_disabled",
+    inputErrorClass: "popup__input_type_error",
+    errorClass: "popup__input-error_active",
+  });
+};
 
-//   formList.forEach((form) => {
-//     const buttonElement = form.querySelector(".popup__button");
-//     buttonElement.addEventListener("click", function () {
-//       enableValidation();
-//     });
-//   });
-// };
-
-export { enableValidation };
+export { validationReset };
