@@ -1,5 +1,6 @@
 // Variables
-import { validationReset } from "./validate.js";
+import Card from "./card.js";
+import FormValidator from "./formValidator.js";
 
 const initialCards = [
   {
@@ -28,8 +29,19 @@ const initialCards = [
   },
 ];
 
+const formValidator = new FormValidator(
+  {
+    inputSelector: ".popup__input",
+    fieldsetSelector: ".popup__info-field",
+    submitButtonSelector: ".popup__button",
+    inactiveButtonClass: "popup__button_disabled",
+    inputErrorClass: "popup__input_type_error",
+    errorClass: "popup__input-error_active",
+  },
+  ".popup__form"
+);
+
 const elements = document.querySelector(".elements");
-const cardTemplate = document.querySelector("#card-template");
 const popupProfile = document.querySelector("#popup-profile");
 const popupCards = document.querySelector("#popup-cards");
 const popupImage = document.querySelector("#popup-image");
@@ -52,39 +64,18 @@ const inputImageUrl = document.querySelector("#image-url");
 // funciones
 function toggleProfile() {
   popupProfile.classList.toggle("popup_opened");
-  validationReset();
+  formValidator.resetValidation();
 }
 
 function toggleCards() {
   popupCards.classList.toggle("popup_opened");
   inputTitle.value = "";
   inputImageUrl.value = "";
-  validationReset();
+  formValidator.resetValidation();
 }
 
 function toggleImage() {
   popupImage.classList.toggle("popup_opened");
-}
-
-function addCard(card) {
-  const cardElement = cardTemplate
-    .cloneNode(true)
-    .content.querySelector(".elements__container");
-  cardElement.querySelector(".elements__image").src =
-    card.link || inputImageUrl.value;
-  if (cardElement.querySelector(".elements__image").src === "") {
-    cardElement.querySelector(".elements__image").src =
-      "https://plus.unsplash.com/premium_photo-1719930222062-5e63c50077cc?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-  }
-  cardElement.querySelector(".elements__image").alt =
-    card.name || inputTitle.value;
-  cardElement.querySelector(".elements__name").textContent =
-    card.name || inputTitle.value;
-  if (cardElement.querySelector(".elements__name").textContent === "") {
-    cardElement.querySelector(".elements__name").textContent = "Título";
-  }
-
-  document.querySelector(".elements").prepend(cardElement);
 }
 
 const popupRemove = () => {
@@ -112,9 +103,30 @@ const toggleClick = () => {
 };
 
 // Eventlisteners
-initialCards.forEach((card) => {
-  addCard(card);
+initialCards.forEach((formData) => {
+  const card = new Card(formData, "#card-template");
+  const cardElement = card.generateCard();
+  elements.prepend(cardElement);
 });
+
+submitButtonCard.addEventListener("click", function (evt) {
+  evt.preventDefault();
+
+  const formData = {
+    name: inputName.value,
+    link: inputImageUrl.value,
+  };
+
+  const card = new Card(formData, "#card-template");
+  const cardElement = card.generateCard();
+
+  elements.prepend(cardElement);
+  inputTitle.value = "";
+  inputImageUrl.value = "";
+  toggleCards();
+});
+
+formValidator.enableValidation();
 
 profileButton.addEventListener("click", toggleProfile);
 cardButton.addEventListener("click", toggleCards);
@@ -145,13 +157,13 @@ profileButton.addEventListener("click", () => {
   inputAbout.value = profileAbout.textContent;
 });
 
-submitButtonCard.addEventListener("click", function (evt) {
-  evt.preventDefault();
-  addCard(evt);
-  inputTitle.value = "";
-  inputImageUrl.value = "";
-  toggleCards();
-});
+// submitButtonCard.addEventListener("click", function (evt) {
+//   evt.preventDefault();
+//   addCard(evt);
+//   inputTitle.value = "";
+//   inputImageUrl.value = "";
+//   toggleCards();
+// });
 
 elements.addEventListener("click", function (evt) {
   if (evt.target.classList.contains("elements__like-icon")) {
