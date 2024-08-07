@@ -1,7 +1,7 @@
 class Card {
   constructor(cardData, templateSelector) {
-    this.cardLink = cardData.link;
-    this.cardName = cardData.name;
+    this._cardLink = cardData.link;
+    this._cardName = cardData.name;
     this._templateSelector = templateSelector;
   }
 
@@ -15,9 +15,9 @@ class Card {
   }
 
   _setCardData(cardElement) {
-    cardElement.querySelector(".elements__image").src = this.cardLink;
-    cardElement.querySelector(".elements__image").alt = this.cardName;
-    cardElement.querySelector(".elements__name").textContent = this.cardName;
+    cardElement.querySelector(".elements__image").src = this._cardLink;
+    cardElement.querySelector(".elements__image").alt = this._cardName;
+    cardElement.querySelector(".elements__name").textContent = this._cardName;
   }
 
   _toggleLike(cardElement) {
@@ -35,9 +35,9 @@ class Card {
     const popupFullImage = document.querySelector(".popup__image");
     const popupImageTitle = document.querySelector(".popup__image-title");
 
-    popupFullImage.src = this.cardLink;
-    popupFullImage.alt = this.cardName;
-    popupImageTitle.textContent = this.cardName;
+    popupFullImage.src = this._cardLink;
+    popupFullImage.alt = this._cardName;
+    popupImageTitle.textContent = this._cardName;
     popupImage.classList.add("popup_opened");
   }
 

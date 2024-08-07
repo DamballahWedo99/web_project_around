@@ -112,12 +112,12 @@ initialCards.forEach((formData) => {
 submitButtonCard.addEventListener("click", function (evt) {
   evt.preventDefault();
 
-  const formData = {
-    name: inputName.value,
+  const cardData = {
+    name: inputTitle.value,
     link: inputImageUrl.value,
   };
 
-  const card = new Card(formData, "#card-template");
+  const card = new Card(cardData, "#card-template");
   const cardElement = card.generateCard();
 
   elements.prepend(cardElement);
@@ -130,18 +130,6 @@ formValidator.enableValidation();
 
 profileButton.addEventListener("click", toggleProfile);
 cardButton.addEventListener("click", toggleCards);
-elements.addEventListener("click", function (evt) {
-  if (evt.target.classList.contains("elements__image")) {
-    const card = evt.target.closest(".elements__container");
-    const imgCard = card.querySelector(".elements__image").src;
-    const titleCard = card.querySelector(".elements__name").textContent;
-
-    popupFullImage.src = imgCard;
-    popupFullImage.alt = titleCard;
-    popupImageTitle.textContent = titleCard;
-    toggleImage();
-  }
-});
 closeButtonProfile.addEventListener("click", toggleProfile);
 closeButtonCards.addEventListener("click", toggleCards);
 closeButtonImage.addEventListener("click", toggleImage);
@@ -155,20 +143,6 @@ submitButtonProfile.addEventListener("click", function () {
 profileButton.addEventListener("click", () => {
   inputName.value = profileName.textContent;
   inputAbout.value = profileAbout.textContent;
-});
-
-// submitButtonCard.addEventListener("click", function (evt) {
-//   evt.preventDefault();
-//   addCard(evt);
-//   inputTitle.value = "";
-//   inputImageUrl.value = "";
-//   toggleCards();
-// });
-
-elements.addEventListener("click", function (evt) {
-  if (evt.target.classList.contains("elements__like-icon")) {
-    evt.target.classList.toggle("elements__like-icon-active");
-  }
 });
 
 elements.addEventListener("click", function (evt) {
