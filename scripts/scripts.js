@@ -1,5 +1,6 @@
 // Variables
-import { validationReset } from "./validate.js";
+import FormValidator from "./formValidator.js";
+import Card from "./card.js";
 
 const initialCards = [
   {
@@ -28,13 +29,22 @@ const initialCards = [
   },
 ];
 
+const formValidator = new FormValidator(
+  {
+    inputSelector: ".popup__input",
+    fieldsetSelector: ".popup__info-field",
+    submitButtonSelector: ".popup__button",
+    inactiveButtonClass: "popup__button_disabled",
+    inputErrorClass: "popup__input_type_error",
+    errorClass: "popup__input-error_active",
+  },
+  ".popup__form"
+);
+
 const elements = document.querySelector(".elements");
-const cardTemplate = document.querySelector("#card-template");
 const popupProfile = document.querySelector("#popup-profile");
 const popupCards = document.querySelector("#popup-cards");
 const popupImage = document.querySelector("#popup-image");
-const popupImageTitle = document.querySelector(".popup__image-title");
-const popupFullImage = document.querySelector(".popup__image");
 const profileButton = document.querySelector(".profile__edit-button");
 const cardButton = document.querySelector(".profile__add-button-container");
 const closeButtonProfile = document.querySelector(".popup__close-icon_profile");
@@ -52,39 +62,18 @@ const inputImageUrl = document.querySelector("#image-url");
 // funciones
 function toggleProfile() {
   popupProfile.classList.toggle("popup_opened");
-  validationReset();
+  formValidator.resetValidation();
 }
 
 function toggleCards() {
   popupCards.classList.toggle("popup_opened");
   inputTitle.value = "";
   inputImageUrl.value = "";
-  validationReset();
+  formValidator.resetValidation();
 }
 
 function toggleImage() {
   popupImage.classList.toggle("popup_opened");
-}
-
-function addCard(card) {
-  const cardElement = cardTemplate
-    .cloneNode(true)
-    .content.querySelector(".elements__container");
-  cardElement.querySelector(".elements__image").src =
-    card.link || inputImageUrl.value;
-  if (cardElement.querySelector(".elements__image").src === "") {
-    cardElement.querySelector(".elements__image").src =
-      "https://plus.unsplash.com/premium_photo-1719930222062-5e63c50077cc?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-  }
-  cardElement.querySelector(".elements__image").alt =
-    card.name || inputTitle.value;
-  cardElement.querySelector(".elements__name").textContent =
-    card.name || inputTitle.value;
-  if (cardElement.querySelector(".elements__name").textContent === "") {
-    cardElement.querySelector(".elements__name").textContent = "Título";
-  }
-
-  document.querySelector(".elements").prepend(cardElement);
 }
 
 const popupRemove = () => {
@@ -112,24 +101,33 @@ const toggleClick = () => {
 };
 
 // Eventlisteners
-initialCards.forEach((card) => {
-  addCard(card);
+initialCards.forEach((cardData) => {
+  const card = new Card(cardData, "#card-template");
+  const cardElement = card.generateCard();
+  elements.prepend(cardElement);
 });
+
+submitButtonCard.addEventListener("click", (evt) => {
+  evt.preventDefault();
+
+  const cardData = {
+    name: inputTitle.value,
+    link: inputImageUrl.value,
+  };
+
+  const card = new Card(cardData, "#card-template");
+  const cardElement = card.generateCard();
+  elements.prepend(cardElement);
+
+  inputTitle.value = "";
+  inputImageUrl.value = "";
+  toggleCards();
+});
+
+formValidator.enableValidation();
 
 profileButton.addEventListener("click", toggleProfile);
 cardButton.addEventListener("click", toggleCards);
-elements.addEventListener("click", function (evt) {
-  if (evt.target.classList.contains("elements__image")) {
-    const card = evt.target.closest(".elements__container");
-    const imgCard = card.querySelector(".elements__image").src;
-    const titleCard = card.querySelector(".elements__name").textContent;
-
-    popupFullImage.src = imgCard;
-    popupFullImage.alt = titleCard;
-    popupImageTitle.textContent = titleCard;
-    toggleImage();
-  }
-});
 closeButtonProfile.addEventListener("click", toggleProfile);
 closeButtonCards.addEventListener("click", toggleCards);
 closeButtonImage.addEventListener("click", toggleImage);
@@ -143,29 +141,6 @@ submitButtonProfile.addEventListener("click", function () {
 profileButton.addEventListener("click", () => {
   inputName.value = profileName.textContent;
   inputAbout.value = profileAbout.textContent;
-});
-
-submitButtonCard.addEventListener("click", function (evt) {
-  evt.preventDefault();
-  addCard(evt);
-  inputTitle.value = "";
-  inputImageUrl.value = "";
-  toggleCards();
-});
-
-elements.addEventListener("click", function (evt) {
-  if (evt.target.classList.contains("elements__like-icon")) {
-    evt.target.classList.toggle("elements__like-icon-active");
-  }
-});
-
-elements.addEventListener("click", function (evt) {
-  if (evt.target.classList.contains("elements__trash-can")) {
-    const card = evt.target.closest(".elements__container");
-    if (card) {
-      card.remove();
-    }
-  }
 });
 
 document.addEventListener("keydown", toggleEscape);
