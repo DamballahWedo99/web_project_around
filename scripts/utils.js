@@ -89,6 +89,7 @@ const cardHandler = (elements) => {
     inputTitle.value = "";
     inputImageUrl.value = "";
     toggleCard();
+    formValidator.resetValidation();
   });
 };
 
@@ -107,6 +108,9 @@ const imageHandler = () => {
 const popupRemove = () => {
   document.querySelectorAll(".popup").forEach((popup) => {
     popup.classList.remove("popup_opened");
+    inputTitle.value = "";
+    inputImageUrl.value = "";
+    formValidator.resetValidation();
   });
 };
 
